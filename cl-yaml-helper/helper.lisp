@@ -14,6 +14,9 @@
           do
              (encode-yaml-to-emitter emitter el))))
 
+(defmethod encode-yaml-to-emitter (emitter (object string))
+  (yaml.emitter:emit-object emitter object))
+
 (defmethod encode-yaml-to-emitter (emitter (object vector))
   (yaml.emitter:emit-sequence (emitter)
     (loop for el across object
